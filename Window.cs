@@ -54,8 +54,13 @@ namespace SnakeGame
             Console.SetCursorPosition(28, 14);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Enter number to select: ");
-
             Console.ResetColor();
+
+            // Lấy lựa chọn của người chơi
+            char choice = Console.ReadKey().KeyChar;
+
+            // Xử lý lựa chọn
+            Run.RunMenu(choice);
         }
     }
 }

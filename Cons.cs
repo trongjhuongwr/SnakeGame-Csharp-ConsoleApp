@@ -27,6 +27,10 @@ namespace SnakeGame
 
         private static char selectNumber = Console.ReadKey().KeyChar;
 
+        private static bool isBoosting = false;
+
+        private static int speed = 100;
+
         public static int ChieuRongHangRao { get => chieuRongHangRao; set => chieuRongHangRao = value; }
         public static int ChieuCaoHangRao { get => chieuCaoHangRao; set => chieuCaoHangRao = value; }
         public static int Score { get => score; set => score = value; }
@@ -39,5 +43,7 @@ namespace SnakeGame
         public static int HeadY { get => headY; set => headY = value; }
         public static int DirectMove { get => directMove; set => directMove = value; }
         public static char SelectNumber { get => selectNumber; set => selectNumber = value; }
+        public static bool IsBoosting { get => isBoosting; set => isBoosting = value; }
+        public static int Speed { get => speed; set => speed = value; }
     }
 }

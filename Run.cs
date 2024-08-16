@@ -21,9 +21,12 @@ namespace SnakeGame
                     break;
                 case '2':
                     Console.Clear();
-                    
+                    Window.WindowStart();
+                    Guide();
                     break;
                 case '3':
+                    Console.Clear();
+                    
                     break;
                 case '4':
                 case '\u001b':
@@ -51,7 +54,7 @@ namespace SnakeGame
                 Console.SetCursorPosition(24, 16);
                 Console.WriteLine("Bạn có muốn chơi lại không? (Y/N)");
                 char choice = Console.ReadKey().KeyChar;
-                if (char.ToUpper(choice) != 'Y')
+                if (char.ToUpper(choice) != 'y')
                 {
                     break;
                 }
@@ -71,9 +74,11 @@ namespace SnakeGame
                 Playing();
             }
         }
+        
         public static void Playing()
         {
             //Sound();
+
             // Vòng lặp chính của trò chơi
             while (!Cons.EndGame)
             {
@@ -86,9 +91,22 @@ namespace SnakeGame
                 // Nhận phím nhập từ người chơi
                 Control.GenerateControl();
 
+                // Xử lý sự kiện tăng tốc độ nhấn giữ phím SPACE
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                    if (keyInfo.Key == ConsoleKey.Spacebar)
+                    {
+                        Cons.IsBoosting = !Cons.IsBoosting;
+                    }
+                }
+                // Cập nhật tốc độ
+                // của rắn
+                Update.UpdateInformation(Cons.IsBoosting);
+
                 // Cập nhật trạng thái của con rắn
                 Update.UpdateInformation();
-                Thread.Sleep(100);
+                Thread.Sleep(Cons.Speed);
             }
             StopGame();
 
@@ -122,6 +140,32 @@ namespace SnakeGame
 
         public static void Guide()
         {
+            Console.SetCursorPosition(22, 3);
+            Console.WriteLine("Hướng dẫn chơi game Rắn Săn Tiền");
+            Console.SetCursorPosition(30, 5);
+            Console.WriteLine("------------------");
+            Console.SetCursorPosition(4, 7);
+            Console.WriteLine("Mục tiêu của trò chơi là điều khiển con rắn ăn càng nhiều tiền càng tốt.");
+            Console.SetCursorPosition(15, 9);
+            Console.WriteLine("Sử dụng các phím mũi tên để điều khiển con rắn.");
+            Console.SetCursorPosition(19, 11);
+            Console.WriteLine("Mỗi khi ăn được tiền, con rắn sẽ dài ra.");
+            Console.SetCursorPosition(21, 13);
+            Console.WriteLine("Tránh đụng vào tường hoặc thân mình.");
+            Console.SetCursorPosition(24, 15);
+            Console.WriteLine("Ấn ESC để thoát khỏi trò chơi.");
+            Console.WriteLine();
+            Console.SetCursorPosition(22, 22);
+            Console.WriteLine("* Ấn phím SPACE để quay lại Menu *");
+            
+            char choice = Console.ReadKey().KeyChar;
+            if (char.ToUpper(choice) != 'p')
+            {
+                Console.Clear();
+                Window.WindowStart();
+                Window.DrawMenu();
+            }
+
 
         }
     }

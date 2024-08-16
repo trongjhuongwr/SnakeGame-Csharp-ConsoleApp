@@ -104,5 +104,21 @@ namespace SnakeGame
             Console.SetCursorPosition(Cons.HeadX, Cons.HeadY);
             Console.Write(Cons.Snake);
         }
+        public static void UpdateInformation(bool isBoosting)
+        {
+            // ...
+
+            if (isBoosting)
+            {
+                // Tăng tốc độ di chuyển của rắn
+                Cons.Speed = 50; // Ví dụ: tăng gấp đôi tốc độ
+            }
+            else
+            {
+                Cons.Speed = 100;
+            }
+
+            // ...
+        }
     }
 }

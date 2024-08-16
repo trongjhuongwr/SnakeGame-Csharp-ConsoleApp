@@ -19,15 +19,8 @@ namespace SnakeGame
 
             Console.CursorVisible = false; // Ẩn con trỏ
 
-            // Vẽ menu chính
+            // Vẽ menu chính và chạy trò chơi
             Window.DrawMenu();
-
-            // Lấy lựa chọn của người chơi
-            char choice = Console.ReadKey().KeyChar;
-
-            // Xử lý lựa chọn
-            Run.RunMenu(choice);
-
         }
     }
 }
